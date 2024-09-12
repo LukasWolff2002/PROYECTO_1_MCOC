@@ -45,50 +45,62 @@ def agregar_red_de_flujo(ax, inicio, control1, intermedio, control2, fin, altura
     # Devolver el camino de la curva combinado
     return bezier_path_combined
 
-def agregar_red_de_flujo_fondo(ax, inicio, control1, intermedio, control2, fin, altura_base, display, color='blue', grosor=1):
-    
-
-   # Convertir puntos a numpy arrays
+def agregar_red_de_flujo_fondo(ax, inicio, intermedio1, control1, intermedio2, intermedio3, intermedio4, control2, intermedio5, fin, altura_base, display, color='blue', grosor=1):
+    # Convertir puntos a numpy arrays
     p0 = np.array(inicio)
-    p1 = np.array(control1)
-    p2 = np.array(control2)
-    p3 = np.array(fin)
-    p_intermedio = np.array(intermedio)
+    p1 = np.array(intermedio1)
+    p2 = np.array(control1)
+    p3 = np.array(intermedio2)
+    p4 = np.array(intermedio3)
+    p5 = np.array(intermedio4)
+    p6 = np.array(control2)
+    p7 = np.array(intermedio5)
+    p8 = np.array(fin)
 
     # Ajustar la altura base
     p0[1] += altura_base
     p1[1] += altura_base
     p2[1] += altura_base
     p3[1] += altura_base
-    p_intermedio[1] += altura_base
+    p4[1] += altura_base
+    p5[1] += altura_base
+    p6[1] += altura_base
+    p7[1] += altura_base
+    p8[1] += altura_base
 
     # Definir t para interpolación
     t = np.linspace(0, 1, 100)
 
-    # Primera parte: trayectoria recta hacia control1, luego curva hacia intermedio
-    recta_1 = (1 - t)[:, None] * p0 + t[:, None] * p1  # Recta desde inicio hacia control1
-    curva_1 = (1 - t)[:, None]**2 * p1 + 2 * (1 - t)[:, None] * t[:, None] * p1 + t[:, None]**2 * p_intermedio  # Curva hacia intermedio
+    # Curva de Bézier cúbica desde inicio hasta intermedio1 pasando por control1
+    bezier_path_1 = (1 - t)[:, None]**3 * p0 + 3 * (1 - t)[:, None]**2 * t[:, None] * p1 + \
+                    3 * (1 - t)[:, None] * t[:, None]**2 * p2 + t[:, None]**3 * p3
 
-    # Segunda parte: curva desde intermedio hacia control2, luego trayectoria recta hacia fin
-    curva_2 = (1 - t)[:, None]**2 * p_intermedio + 2 * (1 - t)[:, None] * t[:, None] * p2 + t[:, None]**2 * p2  # Curva hacia control2
-    recta_2 = (1 - t)[:, None] * p2 + t[:, None] * p3  # Recta desde control2 hacia fin
+    # Curva de Bézier cúbica desde intermedio3 hasta intermedio5
+    bezier_path_2 = (1 - t)[:, None]**3 * p3 + 3 * (1 - t)[:, None]**2 * t[:, None] * p4 + \
+                    3 * (1 - t)[:, None] * t[:, None]**2 * p5 + t[:, None]**3 * p6
+
+    # Curva de Bézier cúbica desde p5 hasta p8 pasando por control2 (p6)
+    bezier_path_3 = (1 - t)[:, None]**3 * p5 + 3 * (1 - t)[:, None]**2 * t[:, None] * p6 + \
+                    3 * (1 - t)[:, None] * t[:, None]**2 * p7 + t[:, None]**3 * p8
 
     # Combinar las trayectorias
-    bezier_path_combined = np.vstack([recta_1, curva_1, curva_2, recta_2])
+    bezier_path_combined = np.vstack([bezier_path_1, bezier_path_2, bezier_path_3])
 
     # Dibujar las líneas
     ax.plot(bezier_path_combined[:, 0], bezier_path_combined[:, 1], color=color, linewidth=grosor)
 
     if display:
         # Dibujar puntos de control
-        ax.scatter([p0[0], p1[0], p2[0], p3[0], p_intermedio[0]],
-                   [p0[1], p1[1], p2[1], p3[1], p_intermedio[1]],
+        ax.scatter([p0[0], p1[0], p2[0], p3[0], p4[0], p5[0], p6[0], p7[0], p8[0]],
+                   [p0[1], p1[1], p2[1], p3[1], p4[1], p5[1], p6[1], p7[1], p8[1]],
                    color='red', label='Puntos de Control', zorder=5)
 
         ax.legend()
 
     # Devolver el camino combinado
     return bezier_path_combined
+
+
 
 
 

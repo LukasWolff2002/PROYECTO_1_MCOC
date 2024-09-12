@@ -78,8 +78,9 @@ def graficar(caso, nombre, altura_base):
 
     #fondo = agregar_red_de_flujo_recta(ax, (0.5, C1), (0.5, 0), (105, 0), (210, 0), (210, C2), altura_base, True)
     #agregar_lineas_equipotenciales_rectas(ax, fondo, num_equipotenciales, longitud=10, color='green', grosor=5)
-   
-    fondo = agregar_red_de_flujo_fondo(ax, (0.5, C1), (0.5, 0), (105, 0), (209.5, 0), (209.5, C2),altura_base-20, True)
+    
+    #TRBAJAR AQUIIIII
+    fondo = agregar_red_de_flujo_fondo(ax, (0.5, C1), (0.5, C1/5), (0.5, 0), (105/5, 0), (105, 0),(210-(105/5),0), (209.5, 0),(209.5,C1/5), (209.5, C2),altura_base, True)
     agregar_lineas_equipotenciales(ax, fondo,num_equipotenciales, longitud=10, color='red', grosor=5)
     distancia_1 = coordenadas_inicio['punto_1'][0]
     distancia_2 = coordenadas_inicio['punto_2'][0]
@@ -125,8 +126,8 @@ def graficar(caso, nombre, altura_base):
     print(coordenadas_4)
     print('')
     print('')
-    pendientes = [pendientes_4, pendientes_1, pendientes_2, pendientes_3]
-    coordenadas = [coordenadas_4, coordenadas_1, coordenadas_2, coordenadas_3]
+    pendientes = [pendientes_4, pendientes_1, pendientes_2, pendientes_3, pendientes_ataguia]
+    coordenadas = [coordenadas_4, coordenadas_1, coordenadas_2, coordenadas_3, coordenadas_ataguia]
 
     # Llamar a la función para graficar las líneas
     graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='green', grosor=1)

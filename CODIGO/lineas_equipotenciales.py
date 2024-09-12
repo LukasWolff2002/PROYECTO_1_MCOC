@@ -2,8 +2,6 @@ from scipy.interpolate import CubicHermiteSpline, CubicSpline
 import numpy as np
 
 
-
-
 def agregar_lineas_equipotenciales(ax, bezier_path, num_equipotenciales=5, longitud=10, color='green', grosor=1):
 
     # Diccionario para almacenar la pendiente en cada punto y coordenadas
@@ -65,6 +63,79 @@ def agregar_lineas_equipotenciales(ax, bezier_path, num_equipotenciales=5, longi
         i += 1
 
     return pendientes_diccionario, coordenadas_diccionario
+'''
+def agregar_lineas_equipotenciales(ax, bezier_path, num_equipotenciales=5, longitud=10, color='green', grosor=1):
+    # Diccionario para almacenar la pendiente en cada punto y coordenadas
+    pendientes_diccionario = {}
+    coordenadas_diccionario = {}
+
+    # Dividir la curva en puntos equidistantes para colocar las equipotenciales
+    num_puntos = len(bezier_path)
+    indices_equipotenciales = np.linspace(0, num_puntos - 1, num_equipotenciales).astype(int)
+
+    # Calcular el punto medio de la curva
+    x_medio, y_medio = bezier_path[num_puntos // 2]
+
+    i = 0
+    for idx in indices_equipotenciales:
+        # Punto en la curva donde vamos a colocar la línea equipotencial
+        x, y = bezier_path[idx]
+        
+        # Derivada numérica para calcular la pendiente de la curva en ese punto
+        if idx > 0:
+            dx = bezier_path[idx][0] - bezier_path[idx - 1][0]
+            dy = bezier_path[idx][1] - bezier_path[idx - 1][1]
+        else:
+            # Si estamos en el primer punto, tomamos la derivada con el siguiente
+            dx = bezier_path[idx + 1][0] - bezier_path[idx][0]
+            dy = bezier_path[idx + 1][1] - bezier_path[idx][1]
+
+        # Pendiente de la curva de flujo
+        pendiente_flujo = dy / dx if dx != 0 else np.inf
+        
+        # Pendiente de la línea equipotencial, que es el negativo recíproco
+        if pendiente_flujo != 0 and pendiente_flujo != np.inf:
+            pendiente_equipotencial = -1 / pendiente_flujo
+        elif pendiente_flujo == 0:
+            pendiente_equipotencial = np.inf  # Línea equipotencial será vertical
+        else:
+            pendiente_equipotencial = 0  # Línea equipotencial será horizontal
+
+        # Almacenar la pendiente en el diccionario
+        pendientes_diccionario[f'punto_{i}'] = pendiente_equipotencial
+
+        # Almacenar las coordenadas en el diccionario
+        coordenadas_diccionario[f'punto_{i}'] = (x, y)
+        
+        # Calcular la distancia al punto medio
+        distancia_al_medio = np.sqrt((x - x_medio)**2 + (y - y_medio)**2)
+        
+        # Modificar la longitud de la línea equipotencial según la distancia al punto medio
+        longitud_modificada = longitud / (1 + distancia_al_medio)
+        
+        # Calcular los puntos de la línea equipotencial
+        if pendiente_equipotencial == np.inf:
+            # Línea equipotencial vertical
+            x_values = [x, x]
+            y_values = [y - longitud_modificada / 2, y + longitud_modificada / 2]
+        elif pendiente_equipotencial == 0:
+            # Línea equipotencial horizontal
+            x_values = [x - longitud_modificada / 2, x + longitud_modificada / 2]
+            y_values = [y, y]
+        else:
+            # Caso general
+            delta_x = longitud_modificada / (2 * np.sqrt(1 + pendiente_equipotencial**2))
+            delta_y = pendiente_equipotencial * delta_x
+            x_values = [x - delta_x, x + delta_x]
+            y_values = [y - delta_y, y + delta_y]
+        
+        # Dibujar la línea equipotencial
+        ax.plot(x_values, y_values, color=color, linewidth=grosor)
+        i += 1
+
+    # Retornar los diccionarios con pendientes y coordenadas
+    return pendientes_diccionario, coordenadas_diccionario
+'''
 
 '''
 def agregar_lineas_equipotenciales(ax, bezier_path, num_equipotenciales=5, longitud=10, color='green', grosor=1):
@@ -197,7 +268,7 @@ def extraer_pendientes(lista_diccionarios, i):
             
     return lista_pendientes
 
-'''
+
 def graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='blue', grosor=1):
 
     for i in range(len(coordenadas[0])):
@@ -283,3 +354,5 @@ def graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='blue', gr
         ax.plot(x_new, y_new, color=color, linewidth=grosor)
 
         i += 1
+
+'''
