@@ -63,6 +63,79 @@ def agregar_lineas_equipotenciales(ax, bezier_path, num_equipotenciales=5, longi
         i += 1
 
     return pendientes_diccionario, coordenadas_diccionario
+
+def agregar_lineas_equipotenciales_fondo(ax, bezier_path, num_equipotenciales=5, longitud=10, color='green', grosor=1):
+    # Encontrar el punto más alto de la función
+    max_y = np.max(bezier_path[:, 1])
+    max_index = np.argmax(bezier_path[:, 1])
+    punto_alto = bezier_path[max_index]
+
+    # Espaciado inicial y factor de disminución
+    espaciado_inicial = 10
+    factor_disminucion = 0.8
+    
+    # Diccionario para almacenar la pendiente en cada punto y coordenadas
+    pendientes_diccionario = {}
+    coordenadas_diccionario = {}
+    
+    # Calcular las líneas equipotenciales
+    for i in range(num_equipotenciales):
+        # Espaciado decreciente
+        espaciado_actual = espaciado_inicial * (factor_disminucion ** i)
+        
+        # Coordenadas del punto para la línea equipotencial
+        x, y = punto_alto
+        
+        # Derivada numérica para calcular la pendiente de la curva en ese punto
+        if max_index > 0 and max_index < len(bezier_path) - 1:
+            dx = bezier_path[max_index + 1][0] - bezier_path[max_index - 1][0]
+            dy = bezier_path[max_index + 1][1] - bezier_path[max_index - 1][1]
+        elif max_index == 0:
+            # Si estamos en el primer punto, tomamos la derivada con el siguiente
+            dx = bezier_path[max_index + 1][0] - bezier_path[max_index][0]
+            dy = bezier_path[max_index + 1][1] - bezier_path[max_index][1]
+        else:
+            # Si estamos en el último punto, tomamos la derivada con el anterior
+            dx = bezier_path[max_index][0] - bezier_path[max_index - 1][0]
+            dy = bezier_path[max_index][1] - bezier_path[max_index - 1][1]
+        
+        pendiente_flujo = dy / dx if dx != 0 else np.inf
+        
+        # Pendiente de la línea equipotencial, que es el negativo recíproco
+        if pendiente_flujo != 0 and pendiente_flujo != np.inf:
+            pendiente_equipotencial = -1 / pendiente_flujo
+        elif pendiente_flujo == 0:
+            pendiente_equipotencial = np.inf  # Línea equipotencial será vertical
+        else:
+            pendiente_equipotencial = 0  # Línea equipotencial será horizontal
+        
+        # Almacenar la pendiente en el diccionario
+        pendientes_diccionario[f'punto_{i}'] = -1/pendiente_flujo
+        
+        # Almacenar las coordenadas en el diccionario
+        coordenadas_diccionario[f'punto_{i}'] = (x, y)
+        
+        # Calcular los puntos de la línea equipotencial
+        if pendiente_equipotencial == np.inf:
+            # Línea equipotencial vertical
+            x_values = [x, x]
+            y_values = [y - espaciado_actual / 2, y + espaciado_actual / 2]
+        elif pendiente_equipotencial == 0:
+            # Línea equipotencial horizontal
+            x_values = [x - espaciado_actual / 2, x + espaciado_actual / 2]
+            y_values = [y, y]
+        else:
+            # General case
+            delta_x = longitud / (2 * np.sqrt(1 + pendiente_equipotencial**2))
+            delta_y = pendiente_equipotencial * delta_x
+            x_values = [x - delta_x, x + delta_x]
+            y_values = [y - delta_y, y + delta_y]
+        
+        # Dibujar la línea equipotencial
+        ax.plot(x_values, y_values, color=color, linewidth=grosor)
+    
+    return pendientes_diccionario, coordenadas_diccionario
+
 '''
 def agregar_lineas_equipotenciales(ax, bezier_path, num_equipotenciales=5, longitud=10, color='green', grosor=1):
     # Diccionario para almacenar la pendiente en cada punto y coordenadas
@@ -258,7 +331,7 @@ def extraer_puntos(lista_diccionarios, i):
 
 def extraer_pendientes(lista_diccionarios, i):
     lista_pendientes = []
-    print(lista_diccionarios)
+   
     for diccionario in lista_diccionarios:
         # Verificar si el diccionario contiene 'punto_1'
         if f'punto_{i}' in diccionario:
@@ -286,8 +359,6 @@ def graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='blue', gr
 
         x_coords = [c[0] for c in coor]
         y_coords = [c[1] for c in coor]
-
-        print(x_coords)
 
         # Checkeo que x sea en orden ascendente
         if x_coords != sorted(x_coords):

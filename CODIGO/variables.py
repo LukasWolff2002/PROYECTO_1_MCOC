@@ -1,6 +1,5 @@
 #Definir variables aqui
 num_equipotenciales = 10 #debe ser un numero par
-d = 30
 gamma_agua = 9810 #N/m3
 gamma_sturada = 2100 #N/m3
 

@@ -13,4 +13,6 @@ def infiltracion (caso):
     return inf
     
 
-infiltracion(caso_1)
+print('caso 1',infiltracion(caso_1))
+print('caso 2',infiltracion(caso_2))
+print('caso 3',infiltracion(caso_3))

@@ -8,7 +8,7 @@ from variables import caso_1, caso_2, caso_3, num_equipotenciales
 from matplotlib import pyplot as plt
 from lineas import agregar_linea_horizontal, agregar_linea_vertical
 from lineas_flujo import agregar_red_de_flujo, agregar_red_de_flujo_recta, agregar_red_de_flujo_fondo
-from lineas_equipotenciales import agregar_lineas_equipotenciales, extraer_pendientes, extraer_puntos, graficar_lineas_con_pendientes
+from lineas_equipotenciales import agregar_lineas_equipotenciales, extraer_pendientes, extraer_puntos, graficar_lineas_con_pendientes, agregar_lineas_equipotenciales_fondo
 
 
 # Dimensiones de la hoja A4 en milímetros
@@ -66,22 +66,23 @@ def graficar(caso, nombre, altura_base):
     punto_2 = punto_1*2
     punto_3 = punto_1*3
 
-    print(C2,d)
 
-    bezier_path_sup = agregar_red_de_flujo(ax, (0, 0), (52.5, 0), (105, 0), (157.5, 0), (210, 0), altura_base, False)
+
+    bezier_path_sup = agregar_red_de_flujo(ax, (0, 0), (52.5, 0), (105, 0), (157.5, 0), (210, 0), altura_base, False, grosor=0)
     bezier_path_ver = agregar_red_de_flujo(ax, (105, 0), (105, (C2-d)/2), (105, C2-d), (105, ((C2-d)*3)/2), (105, 2*(C2-d)), altura_base, False)
-    pendientes_inicio, coordenadas_inicio = agregar_lineas_equipotenciales(ax, bezier_path_sup,8, longitud=10, color='red', grosor=3)
+    pendientes_inicio, coordenadas_inicio = agregar_lineas_equipotenciales(ax, bezier_path_sup,8, longitud=10, color='red', grosor=0)
     pendientes_VER, coordenadas_VER = agregar_lineas_equipotenciales(ax, bezier_path_ver,8, longitud=10, color='red', grosor=0)
 
-    bezier_path_ataguia = agregar_red_de_flujo(ax, (105, C1), (105, (C2-d)), (105, C2-d), (105, (C2-d)), (105, C2-0.5), altura_base, True)
-    pendientes_ataguia, coordenadas_ataguia = agregar_lineas_equipotenciales(ax, bezier_path_ataguia,num_equipotenciales, longitud=10, color='red', grosor=1)
+    bezier_path_ataguia = agregar_red_de_flujo(ax, (105, C1), (105, (C2-d)), (105, C2-d), (105, (C2-d)), (105, C2-0.5), altura_base, False)
+    pendientes_ataguia, coordenadas_ataguia = agregar_lineas_equipotenciales(ax, bezier_path_ataguia,num_equipotenciales, longitud=10, color='red', grosor=0)
 
     #fondo = agregar_red_de_flujo_recta(ax, (0.5, C1), (0.5, 0), (105, 0), (210, 0), (210, C2), altura_base, True)
     #agregar_lineas_equipotenciales_rectas(ax, fondo, num_equipotenciales, longitud=10, color='green', grosor=5)
     
     #TRBAJAR AQUIIIII
-    fondo = agregar_red_de_flujo_fondo(ax, (0.5, C1), (0.5, C1/5), (0.5, 0), (105/5, 0), (105, 0),(210-(105/5),0), (209.5, 0),(209.5,C1/5), (209.5, C2),altura_base, True)
-    agregar_lineas_equipotenciales(ax, fondo,num_equipotenciales, longitud=10, color='red', grosor=5)
+    #fondo = agregar_red_de_flujo_fondo(ax, (0.5, C1), (0.5, C1/5), (0.5, 0), (105/5, 0), (105, 0),altura_base, False)
+    #p_fondo, coordenadas_fondo = agregar_lineas_equipotenciales_fondo(ax, fondo,int(num_equipotenciales/2), longitud=10, color='red', grosor=1)
+
     distancia_1 = coordenadas_inicio['punto_1'][0]
     distancia_2 = coordenadas_inicio['punto_2'][0]
     distancia_3 = coordenadas_inicio['punto_3'][0]
@@ -95,17 +96,16 @@ def graficar(caso, nombre, altura_base):
     bezier_path_3 = agregar_red_de_flujo(ax, (26.25*3, C1), (75.75,punto_3 ), (105, punto_3), (134.25, punto_3), (183.75-(26.25*2), C2), altura_base, True)
     '''
     
-    bezier_path_1 = agregar_red_de_flujo(ax, (105-distancia_3, C1), (52.5,punto_1 ),(105, punto_1), (157.5, punto_1), (105+distancia_3, C2), altura_base, True)
-    bezier_path_2 = agregar_red_de_flujo(ax, (105-distancia_2, C1), (65.625,punto_2 ), (105, punto_2), (144.375, punto_2),(105+distancia_2, C2), altura_base, True)
-    bezier_path_3 = agregar_red_de_flujo(ax, (105-distancia_1, C1), (75.75,punto_3 ), (105, punto_3), (134.25, punto_3), (105+distancia_1, C2), altura_base, True)
-    
-    bezier_path_4 = agregar_red_de_flujo(ax, (0, 0), (52.5, 0), (105, 0), (157.5, 0), (210, 0), altura_base, True)
+    bezier_path_1 = agregar_red_de_flujo(ax, (105-distancia_3, C1), (52.5,punto_1 ),(105, punto_1), (157.5, punto_1), (105+distancia_3, C2), altura_base, False)
+    bezier_path_2 = agregar_red_de_flujo(ax, (105-distancia_2, C1), (65.625,punto_2 ), (105, punto_2), (144.375, punto_2),(105+distancia_2, C2), altura_base, False)
+    bezier_path_3 = agregar_red_de_flujo(ax, (105-distancia_1, C1), (75.75,punto_3 ), (105, punto_3), (134.25, punto_3), (105+distancia_1, C2), altura_base, False)
+    bezier_path_4 = agregar_red_de_flujo(ax, (0, 0), (52.5, 0), (105, 0), (157.5, 0), (210, 0), altura_base, False)
 
     # Dibujar las líneas equipotenciales
     pendientes_1, coordenadas_1 = agregar_lineas_equipotenciales(ax, bezier_path_1, num_equipotenciales, longitud=10, color='green', grosor=0)
-    pendientes_2, coordenadas_2 = agregar_lineas_equipotenciales(ax, bezier_path_2, num_equipotenciales, longitud=10, color='green', grosor=1)
+    pendientes_2, coordenadas_2 = agregar_lineas_equipotenciales(ax, bezier_path_2, num_equipotenciales, longitud=10, color='green', grosor=0)
     pendientes_3, coordenadas_3 = agregar_lineas_equipotenciales(ax, bezier_path_3, num_equipotenciales, longitud=10, color='green', grosor=0)
-    pendientes_4, coordenadas_4 = agregar_lineas_equipotenciales(ax, bezier_path_4, num_equipotenciales, longitud=10, color='green', grosor=1)
+    pendientes_4, coordenadas_4 = agregar_lineas_equipotenciales(ax, bezier_path_4, num_equipotenciales, longitud=10, color='green', grosor=0)
     
 
     # Obtener las claves del diccionario
@@ -121,19 +121,15 @@ def graficar(caso, nombre, altura_base):
     for i in range(mitad, len(claves)):
         pendientes_4[claves[i]] = -10.0
 
-    print('')
-    print('')
-    print(coordenadas_4)
-    print('')
-    print('')
+
     pendientes = [pendientes_4, pendientes_1, pendientes_2, pendientes_3, pendientes_ataguia]
     coordenadas = [coordenadas_4, coordenadas_1, coordenadas_2, coordenadas_3, coordenadas_ataguia]
 
     # Llamar a la función para graficar las líneas
-    graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='green', grosor=1)
+    #graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='green', grosor=1)
 
     # Guardar la figura usando el objeto ax
-    plt.savefig(f"{nombre}.pdf", format='pdf', bbox_inches='tight', pad_inches=0)
+    #plt.savefig(f"{nombre}.pdf", format='pdf', bbox_inches='tight', pad_inches=0)
 
     return ax, pendientes, coordenadas
 
