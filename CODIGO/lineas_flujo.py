@@ -44,3 +44,86 @@ def agregar_red_de_flujo(ax, inicio, control1, intermedio, control2, fin, altura
 
     # Devolver el camino de la curva combinado
     return bezier_path_combined
+
+def agregar_red_de_flujo_fondo(ax, inicio, control1, intermedio, control2, fin, altura_base, display, color='blue', grosor=1):
+    
+
+   # Convertir puntos a numpy arrays
+    p0 = np.array(inicio)
+    p1 = np.array(control1)
+    p2 = np.array(control2)
+    p3 = np.array(fin)
+    p_intermedio = np.array(intermedio)
+
+    # Ajustar la altura base
+    p0[1] += altura_base
+    p1[1] += altura_base
+    p2[1] += altura_base
+    p3[1] += altura_base
+    p_intermedio[1] += altura_base
+
+    # Definir t para interpolación
+    t = np.linspace(0, 1, 100)
+
+    # Primera parte: trayectoria recta hacia control1, luego curva hacia intermedio
+    recta_1 = (1 - t)[:, None] * p0 + t[:, None] * p1  # Recta desde inicio hacia control1
+    curva_1 = (1 - t)[:, None]**2 * p1 + 2 * (1 - t)[:, None] * t[:, None] * p1 + t[:, None]**2 * p_intermedio  # Curva hacia intermedio
+
+    # Segunda parte: curva desde intermedio hacia control2, luego trayectoria recta hacia fin
+    curva_2 = (1 - t)[:, None]**2 * p_intermedio + 2 * (1 - t)[:, None] * t[:, None] * p2 + t[:, None]**2 * p2  # Curva hacia control2
+    recta_2 = (1 - t)[:, None] * p2 + t[:, None] * p3  # Recta desde control2 hacia fin
+
+    # Combinar las trayectorias
+    bezier_path_combined = np.vstack([recta_1, curva_1, curva_2, recta_2])
+
+    # Dibujar las líneas
+    ax.plot(bezier_path_combined[:, 0], bezier_path_combined[:, 1], color=color, linewidth=grosor)
+
+    if display:
+        # Dibujar puntos de control
+        ax.scatter([p0[0], p1[0], p2[0], p3[0], p_intermedio[0]],
+                   [p0[1], p1[1], p2[1], p3[1], p_intermedio[1]],
+                   color='red', label='Puntos de Control', zorder=5)
+
+        ax.legend()
+
+    # Devolver el camino combinado
+    return bezier_path_combined
+
+
+
+
+def agregar_red_de_flujo_recta(ax, inicio, control1, intermedio, control2, fin, altura_base, display=False, color='blue', grosor=5):
+    # Convertir puntos a numpy arrays
+    p0 = np.array(inicio)
+    p1 = np.array(control1)
+    p2 = np.array(control2)
+    p3 = np.array(fin)
+    p_intermedio = np.array(intermedio)
+
+    # Ajustar la altura base
+    p0[1] += altura_base
+    p1[1] += altura_base
+    p2[1] += altura_base
+    p3[1] += altura_base
+    p_intermedio[1] += altura_base
+
+    # Crear las líneas rectas entre los puntos
+    line_path = np.vstack([p0, p1, p_intermedio, p2, p3])
+
+    # Dibujar las líneas rectas
+    ax.plot(line_path[:, 0], line_path[:, 1], color=color, linewidth=grosor)
+
+    if display:
+        # Dibujar puntos de control
+        ax.scatter([p0[0], p1[0], p_intermedio[0], p2[0], p3[0]],
+                   [p0[1], p1[1], p_intermedio[1], p2[1], p3[1]],
+                   color='red', label='Puntos de Control', zorder=5)
+
+        ax.legend()
+
+    # Devolver el camino de las líneas rectas
+    return line_path
+
+
+

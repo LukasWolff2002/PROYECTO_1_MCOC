@@ -7,7 +7,7 @@
 from variables import caso_1, caso_2, caso_3, num_equipotenciales
 from matplotlib import pyplot as plt
 from lineas import agregar_linea_horizontal, agregar_linea_vertical
-from lineas_flujo import agregar_red_de_flujo
+from lineas_flujo import agregar_red_de_flujo, agregar_red_de_flujo_recta, agregar_red_de_flujo_fondo
 from lineas_equipotenciales import agregar_lineas_equipotenciales, extraer_pendientes, extraer_puntos, graficar_lineas_con_pendientes
 
 
@@ -70,13 +70,17 @@ def graficar(caso, nombre, altura_base):
 
     bezier_path_sup = agregar_red_de_flujo(ax, (0, 0), (52.5, 0), (105, 0), (157.5, 0), (210, 0), altura_base, False)
     bezier_path_ver = agregar_red_de_flujo(ax, (105, 0), (105, (C2-d)/2), (105, C2-d), (105, ((C2-d)*3)/2), (105, 2*(C2-d)), altura_base, False)
-    pendientes_inicio, coordenadas_inicio = agregar_lineas_equipotenciales(ax, bezier_path_sup,8, longitud=10, color='red', grosor=0)
+    pendientes_inicio, coordenadas_inicio = agregar_lineas_equipotenciales(ax, bezier_path_sup,8, longitud=10, color='red', grosor=3)
     pendientes_VER, coordenadas_VER = agregar_lineas_equipotenciales(ax, bezier_path_ver,8, longitud=10, color='red', grosor=0)
 
     bezier_path_ataguia = agregar_red_de_flujo(ax, (105, C1), (105, (C2-d)), (105, C2-d), (105, (C2-d)), (105, C2-0.5), altura_base, True)
     pendientes_ataguia, coordenadas_ataguia = agregar_lineas_equipotenciales(ax, bezier_path_ataguia,num_equipotenciales, longitud=10, color='red', grosor=1)
-    
-    print(coordenadas_ataguia)
+
+    #fondo = agregar_red_de_flujo_recta(ax, (0.5, C1), (0.5, 0), (105, 0), (210, 0), (210, C2), altura_base, True)
+    #agregar_lineas_equipotenciales_rectas(ax, fondo, num_equipotenciales, longitud=10, color='green', grosor=5)
+   
+    fondo = agregar_red_de_flujo_fondo(ax, (0.5, C1), (0.5, 0), (105, 0), (209.5, 0), (209.5, C2),altura_base-20, True)
+    agregar_lineas_equipotenciales(ax, fondo,num_equipotenciales, longitud=10, color='red', grosor=5)
     distancia_1 = coordenadas_inicio['punto_1'][0]
     distancia_2 = coordenadas_inicio['punto_2'][0]
     distancia_3 = coordenadas_inicio['punto_3'][0]
@@ -116,10 +120,13 @@ def graficar(caso, nombre, altura_base):
     for i in range(mitad, len(claves)):
         pendientes_4[claves[i]] = -10.0
 
-
-
-    pendientes = [pendientes_4, pendientes_1, pendientes_2, pendientes_3, pendientes_ataguia]
-    coordenadas = [coordenadas_4, coordenadas_1, coordenadas_2, coordenadas_3, coordenadas_ataguia]
+    print('')
+    print('')
+    print(coordenadas_4)
+    print('')
+    print('')
+    pendientes = [pendientes_4, pendientes_1, pendientes_2, pendientes_3]
+    coordenadas = [coordenadas_4, coordenadas_1, coordenadas_2, coordenadas_3]
 
     # Llamar a la función para graficar las líneas
     graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='green', grosor=1)
