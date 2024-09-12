@@ -87,7 +87,7 @@ def extraer_pendientes(lista_diccionarios, i):
             
     return lista_pendientes
 
-
+'''
 def graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='blue', grosor=1):
 
     for i in range(len(coordenadas[0])):
@@ -102,8 +102,11 @@ def graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='blue', gr
         coor = extraer_puntos(coordenadas , i)
         m = extraer_pendientes(pendientes, i)
 
+
         x_coords = [c[0] for c in coor]
         y_coords = [c[1] for c in coor]
+
+        print(x_coords)
 
         # Checkeo que x sea en orden ascendente
         if x_coords != sorted(x_coords):
@@ -152,15 +155,18 @@ def graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='blue', gr
         print(x_coords)
         print(m)
 
-        # Crear el spline cúbico hermítico que respeta las pendientes (derivadas)
-        spline = CubicHermiteSpline(x_coords, y_coords, m)
+        t = np.arange(len(x_coords))  # t: 0, 1, 2, ..., len(x_coords) - 1
 
+        # Crear el spline cúbico hermítico que respeta las pendientes
+        spline_x = CubicHermiteSpline(t, x_coords, dydx=m)  # Spline para x
+        spline_y = CubicHermiteSpline(t, y_coords, dydx=m)  # Spline para y
+        
         # Generar puntos adicionales para graficar la curva suavemente
-        x_new = np.linspace(min(x_coords), max(x_coords), 100)
-        y_new = spline(x_new)
+        t_new = np.linspace(0, len(x_coords) - 1, 100)
+        x_new = spline_x(t_new)
+        y_new = spline_y(t_new)
 
         # Dibujar la curva en el gráfico
         ax.plot(x_new, y_new, color=color, linewidth=grosor)
 
         i += 1
-'''
