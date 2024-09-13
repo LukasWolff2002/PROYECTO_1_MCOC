@@ -83,22 +83,26 @@ def graficar(caso, nombre, altura_base):
     #fondo = agregar_red_de_flujo_fondo(ax, (0.5, C1), (0.5, C1/5), (0.5, 0), (105/5, 0), (105, 0),altura_base, False)
     #p_fondo, coordenadas_fondo = agregar_lineas_equipotenciales_fondo(ax, fondo,int(num_equipotenciales/2), longitud=10, color='red', grosor=1)
 
-    distancia_1 = coordenadas_inicio['punto_1'][0]
-    distancia_2 = coordenadas_inicio['punto_2'][0]
-    distancia_3 = coordenadas_inicio['punto_3'][0]
+    distancia_1 = coordenadas_inicio['punto_1'][0]+5
+    distancia_2 = coordenadas_inicio['punto_2'][0] + 7
+    distancia_3 = coordenadas_inicio['punto_3'][0]-5
+    print(coordenadas_VER)
+    ver_1 = coordenadas_VER['punto_1'][1]-altura_base
+    ver_2 = coordenadas_VER['punto_2'][1]-altura_base+2.5
+    ver_3 = coordenadas_VER['punto_3'][1]-altura_base 
 
-    ver_1 = coordenadas_VER['punto_1'][1]
-    ver_2 = coordenadas_VER['punto_2'][1]
-    ver_3 = coordenadas_VER['punto_3'][1]
+    print(ver_1)
+    print(ver_2)
+    print(ver_3)
     '''
     bezier_path_1 = agregar_red_de_flujo(ax, (26.25, C1), (52.5,punto_1 ),(105, punto_1), (157.5, punto_1), (183.75, C2), altura_base, True)
     bezier_path_2 = agregar_red_de_flujo(ax, (26.25*2, C1), (65.625,punto_2 ), (105, punto_2), (144.375, punto_2),(183.75-26.25, C2), altura_base, True)
     bezier_path_3 = agregar_red_de_flujo(ax, (26.25*3, C1), (75.75,punto_3 ), (105, punto_3), (134.25, punto_3), (183.75-(26.25*2), C2), altura_base, True)
     '''
     
-    bezier_path_1 = agregar_red_de_flujo(ax, (105-distancia_3, C1), (52.5,punto_1 ),(105, punto_1), (157.5, punto_1), (105+distancia_3, C2), altura_base, False)
-    bezier_path_2 = agregar_red_de_flujo(ax, (105-distancia_2, C1), (65.625,punto_2 ), (105, punto_2), (144.375, punto_2),(105+distancia_2, C2), altura_base, False)
-    bezier_path_3 = agregar_red_de_flujo(ax, (105-distancia_1, C1), (75.75,punto_3 ), (105, punto_3), (134.25, punto_3), (105+distancia_1, C2), altura_base, False)
+    bezier_path_1 = agregar_red_de_flujo(ax, (105-distancia_3, C1), (52.5,ver_1 ),(105, ver_1), (157.5, ver_1), (105+distancia_3, C2), altura_base, False)
+    bezier_path_2 = agregar_red_de_flujo(ax, (105-distancia_2, C1), (65.625,ver_2 ), (105, ver_2), (144.375, ver_2),(105+distancia_2, C2), altura_base, False)
+    bezier_path_3 = agregar_red_de_flujo(ax, (105-distancia_1, C1), (75.75,ver_3 ), (105, ver_3), (134.25, ver_3), (105+distancia_1, C2), altura_base, False)
     bezier_path_4 = agregar_red_de_flujo(ax, (0, 0), (52.5, 0), (105, 0), (157.5, 0), (210, 0), altura_base, False)
 
     # Dibujar las líneas equipotenciales
