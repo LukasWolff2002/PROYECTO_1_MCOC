@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.interpolate import CubicHermiteSpline
 
-def agregar_red_de_flujo(ax, inicio, control1, intermedio, control2, fin, altura_base, display, color='blue', grosor=1):
+def agregar_red_de_flujo(ax, inicio, control1, intermedio, control2, fin, altura_base, display,grosor=1.5, color='blue'):
     # Convertir puntos a numpy arrays
     p0 = np.array(inicio)
     p1 = np.array(control1)

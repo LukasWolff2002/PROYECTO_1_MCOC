@@ -1,12 +1,14 @@
 #Ok, ahora se que para calcular la presion en la ataguia, nesecito el ultimo diccionario, donde
 
-from variables import caso_1, caso_2, caso_3, num_equipotenciales, k, gamma_agua, gamma_sturada
+from variables import caso_1, caso_2, caso_3, num_equipotenciales, k, gamma_agua, gamma_sturada, altura_rel
 from grafico import graficar, graficar_lineas_con_pendientes
 from matplotlib import pyplot as plt
 from scipy.interpolate import interp1d
 import numpy as np
 from scipy.interpolate import interp1d
 from math import ceil as ceil
+from scipy.integrate import simps
+from lineas import agregar_linea_horizontal
 
     # Función para encontrar el valor de y para un valor de x
 def encontrar_y(interpolacion, x):
@@ -78,7 +80,7 @@ def restar_diccionarios(izquierda, derecha, x_reflexion=105):
     return resultado 
 '''
 
-def presiones_ataguia(caso, nombre, altura_rel):
+def presiones_ataguia(caso, nombre, altura_rel, extension):
 
     C1 = caso['c1']
     C2 = caso['c2']
@@ -118,25 +120,22 @@ def presiones_ataguia(caso, nombre, altura_rel):
 
         # Iterar sobre la segunda mitad
 
-    if nombre != 'caso_1':
-        for clave in claves[mitad:]:
-            #ahora calculo la presion de poros
-            z = ((coor[clave][1]-altura_rel)*200)/1000
-            Zg = z
-            ni = int(clave.split('_')[1])
-            Delta_Hi = (C1+B1)-((Delta_H*ni)/Nd)
-            hp = Delta_Hi-Zg
-            u = (hp*gamma_agua)/1000
-            derecha[coor[clave][1]] = u
-
-
+    for clave in claves[mitad:]:
+        #ahora calculo la presion de poros
+        z = ((coor[clave][1]-altura_rel)*200)/1000
+        Zg = z
+        ni = int(clave.split('_')[1])
+        Delta_Hi = (C1+B1)-((Delta_H*ni)/Nd)
+        hp = Delta_Hi-Zg
+        u = (hp*gamma_agua)/1000
+        if nombre == 'caso_1':
+            derecha[coor[clave][1]+0.01] = u
+            break
+        derecha[coor[clave][1]] = u
 
     
     #neto = restar_diccionarios(izquierda, derecha)
     #graficar_diccionario(ax, neto, False, color='red') 
-
-    print(f'{izquierda=}')
-    print(f'{derecha=}') 
     
     for claves in derecha.keys():
         derecha[claves] += 105
@@ -146,13 +145,6 @@ def presiones_ataguia(caso, nombre, altura_rel):
 
     derecha[Altura_agua_der] = 105
 
-    if nombre == 'caso_1':
-        derecha[(((C2)*1000)/200)+altura_rel+0.1] = 105+(((B2)*1000)/200)*gamma_agua
-
-    graficar_diccionario(ax, izquierda, False, color='blue')
-    graficar_diccionario(ax, derecha, True, color='blue')
-
-    
     x_known = list(izquierda.keys())
     y_known = list(izquierda.values())
 
@@ -166,14 +158,10 @@ def presiones_ataguia(caso, nombre, altura_rel):
     # Calcular los valores de y para las incógnitas
     for values in incognitas:
         values_aprox = ceil(values)
-        print(f'{values=}, {encontrar_y(interpolacion, values_aprox)}')
         interpolado[values] = float(encontrar_y(interpolacion, values_aprox))
 
     
-    print(f'{interpolado=}')
     max_interpolado = max(interpolado.keys())
-
-    print(f'{max_interpolado=}')
     
     neto = []
     #Oke, primero me tengo que quedar con todas las claves de izquierda que sean mayores a las claves de interpolado
@@ -184,39 +172,104 @@ def presiones_ataguia(caso, nombre, altura_rel):
     #Luego agrego el maximo
     neto.append([max_interpolado, interpolado[max_interpolado]])
 
-    print(f'{neto=}')
 
     #Ahora comienzo con la resata
     for claves in derecha.keys():
-        print(f'{claves=}')
-        if claves == 129.5:
-            print(-derecha[claves] + interpolado[claves])
-        neto.append([claves,derecha[claves] - interpolado[claves]])
+        neto.append([claves,derecha[claves]-105 + interpolado[claves]])
 
-    print(f'{neto=}')
+
 
     # Ordenar las sublistas por el primer elemento en orden descendente
     neto_ordenada = sorted(neto, key=lambda x: x[0], reverse=True)
 
-    print(f'{neto_ordenada=}')
 
+    #graficar_diccionario(ax, izquierda, False, color='blue')
+    #graficar_diccionario(ax, derecha, True, color='blue')
     graficar_lista(ax, neto_ordenada, color='red')
-            
 
+    x = np.array([sublista[0] for sublista in neto_ordenada])
+    y = np.array([sublista[1] for sublista in neto_ordenada])
+
+    # Calcular el área bajo la curva usando la regla de Simpson
+    area = simps(y, x)
+
+    # Centroide en x: x_bar = (1/Area) * ∫ x * y dx
+    x_bar = simps(x * y, x) / area
+
+    # Centroide en y: y_bar = (1/Area) * ∫ (1/2) * y^2 dx
+    y_bar = simps(0.5 * y**2, x) / area
+
+    print(f"Centroide: x_bar = {x_bar}, y_bar = {y_bar}")
+
+    #Ahora grafico el centroide
+
+    agregar_linea_horizontal(ax, x_bar + altura_rel, 0, 210, 'red') #Linea de A1
+    
+    # Quiero obtener las presiones en ciertos puntos
+
+    x_known = list(izquierda.keys())
+    y_known = list(izquierda.values())
+
+    interpolacion = interp1d(x_known, y_known, kind='linear')
+
+    A = ((B1+C1)*1000)/200 +altura_rel-1
+    A = 105 - encontrar_y(interpolacion,ceil(A) )
+    print(f'Presion en A: {A}')
+
+    B = ((C1)*1000)/200 +altura_rel
+    B = 105 - encontrar_y(interpolacion, ceil(B) )
+    print(f'Presion en B: {B}')
+
+    C = ((C2+B2)*1000)/200 +altura_rel
+    C = 105 - encontrar_y(interpolacion, ceil(C) )
+    print(f'Presion en C: {C}')
+
+    D = ((C2)*1000)/200 +altura_rel+1
+    D = 105 - encontrar_y(interpolacion, ceil(D) )
+    print(f'Presion en D: {D}')
+
+    E = 105 - min(y_known)
+    print(f'Presion en E: {E}')
+
+    x_known = list(derecha.keys())
+    y_known = list(derecha.values())
+
+    interpolacion = interp1d(x_known, y_known, kind='linear')
+
+    F = max(y_known) - 105
+    print(f'Presion en F: {F}')
+
+    G = ((C2)*1000)/200 +altura_rel+1
+    G = encontrar_y(interpolacion, ceil(G) ) - 105
+    print(f'Presion en G: {G}')
+
+    H = ((C2+B2)*1000)/200 +altura_rel
+    H = encontrar_y(interpolacion, ceil(H) ) - 105
+    print(f'Presion en H: {H}')
+
+
+
+
+
+
+
+    
 
 
     # Llamar a la función para graficar las líneas
     graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='green', grosor=1)
 
     # Guardar la figura usando el objeto ax
-    plt.savefig(f"{nombre}.pdf", format='pdf', bbox_inches='tight', pad_inches=0)
+    plt.savefig(f"{nombre+extension}.jpg", format='jpg', bbox_inches='tight', pad_inches=0)
+
+
 
 
 
 
     #luego al lado derecho
 
-presiones_ataguia(caso_1, 'caso_1', 50)
-# presiones_ataguia(caso_2, 'caso_2', 50)
-# presiones_ataguia(caso_3, 'caso_3', 50)
+presiones_ataguia(caso_1, 'caso_1', altura_rel, '_centroide_y')
+presiones_ataguia(caso_2, 'caso_2', altura_rel, '_centroide_y')
+presiones_ataguia(caso_3, 'caso_3', altura_rel, '_centroide_y')
     

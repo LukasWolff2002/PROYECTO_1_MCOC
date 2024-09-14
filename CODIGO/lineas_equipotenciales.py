@@ -2,7 +2,7 @@ from scipy.interpolate import CubicHermiteSpline, CubicSpline
 import numpy as np
 
 
-def agregar_lineas_equipotenciales(ax, bezier_path, num_equipotenciales=5, longitud=10, color='green', grosor=1):
+def agregar_lineas_equipotenciales(ax, bezier_path, num_equipotenciales=5, longitud=10, color='green', grosor=1.5):
 
     # Diccionario para almacenar la pendiente en cada punto y coordenadas
     pendientes_diccionario = {}
@@ -342,7 +342,7 @@ def extraer_pendientes(lista_diccionarios, i):
     return lista_pendientes
 
 
-def graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='blue', grosor=1):
+def graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='blue', grosor=2):
 
     for i in range(len(coordenadas[0])):
 

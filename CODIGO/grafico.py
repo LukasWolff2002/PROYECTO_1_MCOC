@@ -13,7 +13,7 @@ from lineas_equipotenciales import agregar_lineas_equipotenciales, extraer_pendi
 
 # Dimensiones de la hoja A4 en milímetros
 ancho_a4_mm = 210
-alto_a4_mm = 297
+alto_a4_mm = 150
 
 # Tamaño de la cuadrícula en milímetros
 tamanio_cuadricula_mm = 5
@@ -61,6 +61,7 @@ def graficar(caso, nombre, altura_base):
     A1 = A1 + B1 #Sumo la altura de B1
     agregar_linea_vertical(ax, 105, C2+altura_base-d, A1+altura_base) #Linea de A1
 
+    agregar_linea_horizontal(ax, 0.1+altura_base, 0, 210, 'black') #Linea de A1
     # Dibujar una curva de flujo con dos puntos de control
     punto_1 =(C2-d)/4
     punto_2 = punto_1*2
@@ -69,11 +70,11 @@ def graficar(caso, nombre, altura_base):
 
 
     bezier_path_sup = agregar_red_de_flujo(ax, (0, 0), (52.5, 0), (105, 0), (157.5, 0), (210, 0), altura_base, False, grosor=0)
-    bezier_path_ver = agregar_red_de_flujo(ax, (105, 0), (105, (C2-d)/2), (105, C2-d), (105, ((C2-d)*3)/2), (105, 2*(C2-d)), altura_base, False)
+    bezier_path_ver = agregar_red_de_flujo(ax, (105, 0), (105, (C2-d)/2), (105, C2-d), (105, ((C2-d)*3)/2), (105, 2*(C2-d)), altura_base, False, grosor=0)
     pendientes_inicio, coordenadas_inicio = agregar_lineas_equipotenciales(ax, bezier_path_sup,8, longitud=10, color='red', grosor=0)
     pendientes_VER, coordenadas_VER = agregar_lineas_equipotenciales(ax, bezier_path_ver,8, longitud=10, color='red', grosor=0)
 
-    bezier_path_ataguia = agregar_red_de_flujo(ax, (105, C1), (105, (C2-d)), (105, C2-d), (105, (C2-d)), (105, C2-0.5), altura_base, False)
+    bezier_path_ataguia = agregar_red_de_flujo(ax, (105, C1), (105, (C2-d)), (105, C2-d), (105, (C2-d)), (105, C2-0.5), altura_base, False, grosor=0)
     pendientes_ataguia, coordenadas_ataguia = agregar_lineas_equipotenciales(ax, bezier_path_ataguia,num_equipotenciales, longitud=10, color='red', grosor=0)
 
     #fondo = agregar_red_de_flujo_recta(ax, (0.5, C1), (0.5, 0), (105, 0), (210, 0), (210, C2), altura_base, True)
@@ -100,7 +101,7 @@ def graficar(caso, nombre, altura_base):
     bezier_path_1 = agregar_red_de_flujo(ax, (105-distancia_3, C1), (52.5,ver_1 ),(105, ver_1), (157.5, ver_1), (105+distancia_3, C2), altura_base, False)
     bezier_path_2 = agregar_red_de_flujo(ax, (105-distancia_2, C1), (65.625,ver_2 ), (105, ver_2), (144.375, ver_2),(105+distancia_2, C2), altura_base, False)
     bezier_path_3 = agregar_red_de_flujo(ax, (105-distancia_1, C1), (75.75,ver_3 ), (105, ver_3), (134.25, ver_3), (105+distancia_1, C2), altura_base, False)
-    bezier_path_4 = agregar_red_de_flujo(ax, (0, 0), (52.5, 0), (105, 0), (157.5, 0), (210, 0), altura_base, False)
+    bezier_path_4 = agregar_red_de_flujo(ax, (0, 0), (52.5, 0), (105, 0), (157.5, 0), (210, 0), altura_base, False, grosor=0)
 
     # Dibujar las líneas equipotenciales
     pendientes_1, coordenadas_1 = agregar_lineas_equipotenciales(ax, bezier_path_1, num_equipotenciales, longitud=10, color='green', grosor=0)

@@ -1,4 +1,4 @@
-from variables import caso_1, caso_2, caso_3, num_equipotenciales, k, gamma_agua, gamma_sturada
+from variables import caso_1, caso_2, caso_3, num_equipotenciales, k, gamma_agua, gamma_sturada, altura_rel
 from grafico import graficar, graficar_lineas_con_pendientes
 from matplotlib import pyplot as plt
 from scipy.interpolate import griddata
@@ -46,18 +46,17 @@ def agregar_mapa_calor_con_mascara_L(ax, diccionario_presion, coordenadas_l, cma
     poligono_l = plt.Polygon(coordenadas_l, fill=None, edgecolor='black', linewidth=2)
     ax.add_patch(poligono_l)
 
-    # Agregar barra de color dentro de la figura
-    cbar = plt.colorbar(heatmap, ax=ax, orientation='vertical', fraction=0.05, pad=0.04)
+    # Agregar barra de color de forma horizontal
+    cbar = plt.colorbar(heatmap, ax=ax, orientation='horizontal', fraction=0.05, pad=0.08)
     
     # Ajustar la escala de la leyenda de presión
     cbar.set_label('Presión KPa', fontsize=16)  # Etiqueta de la barra de colores
     cbar.ax.tick_params(labelsize=12)  # Tamaño del texto de la leyenda
     cbar.set_ticks([vmin, (vmin + vmax) / 2, vmax])  # Ajustar los ticks de la barra de colores
-    cbar.ax.set_position([0.75, 0.1, 0.02, 1.2])  # [left, bottom, width, height] dentro del gráfico
 
 
 
-def presiones_poros(caso, nombre, altura_rel):
+def presiones_poros(caso, nombre, altura_rel, extension):
 
     presiones = {}
 
@@ -121,12 +120,11 @@ def presiones_poros(caso, nombre, altura_rel):
     graficar_lineas_con_pendientes(ax, coordenadas, pendientes, color='green', grosor=1)
 
     # Guardar la figura usando el objeto ax
-    plt.savefig(f"{nombre}.pdf", format='pdf', bbox_inches='tight', pad_inches=0)
-    print('')
+    plt.savefig(f"{nombre+extension}.jpg", format='jpg', bbox_inches='tight', pad_inches=0)
 
-presiones_poros(caso_1, 'caso_1', 50)
-presiones_poros(caso_2, 'caso_2', 50)
-presiones_poros(caso_3, 'caso_3', 50)
+presiones_poros(caso_1, 'caso_1', altura_rel, '_mapa_calor')
+presiones_poros(caso_2, 'caso_2', altura_rel, '_mapa_calor')
+presiones_poros(caso_3, 'caso_3', altura_rel, '_mapa_calor')
     
 
     

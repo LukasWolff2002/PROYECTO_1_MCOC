@@ -1,7 +1,8 @@
 #Definir variables aqui
 num_equipotenciales = 8 #debe ser un numero par
 gamma_agua = 9810 #N/m3
-gamma_sturada = 2100 #N/m3
+gamma_sturada = 21000 #N/m3
+altura_rel = 0
 
 #Variables suelo
 k = 6.9e-5
