@@ -86,14 +86,11 @@ def graficar(caso, nombre, altura_base):
     distancia_1 = coordenadas_inicio['punto_1'][0]+5
     distancia_2 = coordenadas_inicio['punto_2'][0] + 7
     distancia_3 = coordenadas_inicio['punto_3'][0]-5
-    print(coordenadas_VER)
+
     ver_1 = coordenadas_VER['punto_1'][1]-altura_base
     ver_2 = coordenadas_VER['punto_2'][1]-altura_base+2.5
     ver_3 = coordenadas_VER['punto_3'][1]-altura_base 
 
-    print(ver_1)
-    print(ver_2)
-    print(ver_3)
     '''
     bezier_path_1 = agregar_red_de_flujo(ax, (26.25, C1), (52.5,punto_1 ),(105, punto_1), (157.5, punto_1), (183.75, C2), altura_base, True)
     bezier_path_2 = agregar_red_de_flujo(ax, (26.25*2, C1), (65.625,punto_2 ), (105, punto_2), (144.375, punto_2),(183.75-26.25, C2), altura_base, True)
@@ -138,7 +135,7 @@ def graficar(caso, nombre, altura_base):
     return ax, pendientes, coordenadas
 
 # Ejemplo de uso
-graficar(caso_1, 'caso_1', 50)
-graficar(caso_2, 'caso_2', 50)
-graficar(caso_3, 'caso_3', 50)
+# graficar(caso_1, 'caso_1', 50)
+# graficar(caso_2, 'caso_2', 50)
+# graficar(caso_3, 'caso_3', 50)
 
