@@ -188,7 +188,7 @@ def presiones_ataguia(caso, nombre, altura_rel, extension):
     graficar_lista(ax, neto_ordenada, color='red')
 
     x = np.array([sublista[0] for sublista in neto_ordenada])
-    y = np.array([sublista[1] for sublista in neto_ordenada])
+    y = np.array([105 - sublista[1] for sublista in neto_ordenada])
 
     # Calcular el área bajo la curva usando la regla de Simpson
     area = simps(y, x)

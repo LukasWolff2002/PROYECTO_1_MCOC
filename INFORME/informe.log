@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.17)  14 SEP 2024 20:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.17)  14 SEP 2024 20:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -750,181 +750,181 @@ Package pdftex.def Info: FOTOS/caso_3dibujo_base.jpg  used on input line 172.
 <FOTOS/caso_1_presion_ataquia_total.jpg, id=123, 596.9502pt x 426.393pt>
 File: FOTOS/caso_1_presion_ataquia_total.jpg Graphic file (type jpg)
 <use FOTOS/caso_1_presion_ataquia_total.jpg>
-Package pdftex.def Info: FOTOS/caso_1_presion_ataquia_total.jpg  used on input line 190.
+Package pdftex.def Info: FOTOS/caso_1_presion_ataquia_total.jpg  used on input line 192.
 (pdftex.def)             Requested size: 141.94835pt x 101.393pt.
 <FOTOS/caso_2_presion_ataquia_total.jpg, id=124, 596.9502pt x 426.393pt>
 File: FOTOS/caso_2_presion_ataquia_total.jpg Graphic file (type jpg)
 <use FOTOS/caso_2_presion_ataquia_total.jpg>
-Package pdftex.def Info: FOTOS/caso_2_presion_ataquia_total.jpg  used on input line 195.
+Package pdftex.def Info: FOTOS/caso_2_presion_ataquia_total.jpg  used on input line 197.
 (pdftex.def)             Requested size: 141.94835pt x 101.393pt.
 <FOTOS/caso_3_presion_ataquia_total.jpg, id=125, 596.9502pt x 426.393pt>
 File: FOTOS/caso_3_presion_ataquia_total.jpg Graphic file (type jpg)
 <use FOTOS/caso_3_presion_ataquia_total.jpg>
-Package pdftex.def Info: FOTOS/caso_3_presion_ataquia_total.jpg  used on input line 200.
+Package pdftex.def Info: FOTOS/caso_3_presion_ataquia_total.jpg  used on input line 202.
 (pdftex.def)             Requested size: 141.94835pt x 101.393pt.
 File: LOGO_UNIVERSIDAD.jpg Graphic file (type jpg)
 <use LOGO_UNIVERSIDAD.jpg>
-Package pdftex.def Info: LOGO_UNIVERSIDAD.jpg  used on input line 219.
+Package pdftex.def Info: LOGO_UNIVERSIDAD.jpg  used on input line 206.
 (pdftex.def)             Requested size: 110.8946pt x 40.20973pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.219 \end{table}
-                  [1
+l.206 
+       [1
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.219 \end{table}
-                 
+l.206 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.219 \end{table}
-                 
+l.206 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.219 \end{table}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.219 \end{table}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.219 \end{table}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.219 \end{table}
-                  <./FOTOS/caso_1dibujo_base.jpg> <./FOTOS/caso_2dibujo_base.jpg> <./FOTOS/caso_3dibujo_base.jpg> <./FOTOS/caso_1_presion_ataquia_total.jpg> <./FOTOS/caso_2_presion_ataquia_total.jpg> <./FOTOS/caso_3_presion_ataquia_total.jpg>] (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
+l.206 
+       <./FOTOS/caso_1dibujo_base.jpg> <./FOTOS/caso_2dibujo_base.jpg> <./FOTOS/caso_3dibujo_base.jpg>] (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/02/21 1.10 listings language file
 )
-<FOTOS/caso_1_mapa_calor.jpg, id=129, 518.8986pt x 464.6961pt>
-File: FOTOS/caso_1_mapa_calor.jpg Graphic file (type jpg)
-<use FOTOS/caso_1_mapa_calor.jpg>
-Package pdftex.def Info: FOTOS/caso_1_mapa_calor.jpg  used on input line 268.
-(pdftex.def)             Requested size: 141.94835pt x 127.12175pt.
-<FOTOS/caso_2_mapa_calor.jpg, id=130, 518.8986pt x 464.6961pt>
-File: FOTOS/caso_2_mapa_calor.jpg Graphic file (type jpg)
-<use FOTOS/caso_2_mapa_calor.jpg>
-Package pdftex.def Info: FOTOS/caso_2_mapa_calor.jpg  used on input line 273.
-(pdftex.def)             Requested size: 141.94835pt x 127.12175pt.
-<FOTOS/caso_3_mapa_calor.jpg, id=131, 518.8986pt x 464.6961pt>
-File: FOTOS/caso_3_mapa_calor.jpg Graphic file (type jpg)
-<use FOTOS/caso_3_mapa_calor.jpg>
-Package pdftex.def Info: FOTOS/caso_3_mapa_calor.jpg  used on input line 278.
-(pdftex.def)             Requested size: 141.94835pt x 127.12175pt.
 File: LOGO_UNIVERSIDAD.jpg Graphic file (type jpg)
 <use LOGO_UNIVERSIDAD.jpg>
-Package pdftex.def Info: LOGO_UNIVERSIDAD.jpg  used on input line 282.
+Package pdftex.def Info: LOGO_UNIVERSIDAD.jpg  used on input line 252.
 (pdftex.def)             Requested size: 110.8946pt x 40.20973pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.282 
-       [2
+l.252 \end{lstlisting}
+                       [2
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.252 \end{lstlisting}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.252 \end{lstlisting}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.252 \end{lstlisting}
+                      
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.282 
-      ]
-<FOTOS/caso_1_presion_ataquia_neta.jpg, id=168, 596.9502pt x 426.393pt>
+l.252 \end{lstlisting}
+                       <./FOTOS/caso_1_presion_ataquia_total.jpg> <./FOTOS/caso_2_presion_ataquia_total.jpg> <./FOTOS/caso_3_presion_ataquia_total.jpg>]
+<FOTOS/caso_1_mapa_calor.jpg, id=160, 518.8986pt x 464.6961pt>
+File: FOTOS/caso_1_mapa_calor.jpg Graphic file (type jpg)
+<use FOTOS/caso_1_mapa_calor.jpg>
+Package pdftex.def Info: FOTOS/caso_1_mapa_calor.jpg  used on input line 270.
+(pdftex.def)             Requested size: 141.94835pt x 127.12175pt.
+<FOTOS/caso_2_mapa_calor.jpg, id=161, 518.8986pt x 464.6961pt>
+File: FOTOS/caso_2_mapa_calor.jpg Graphic file (type jpg)
+<use FOTOS/caso_2_mapa_calor.jpg>
+Package pdftex.def Info: FOTOS/caso_2_mapa_calor.jpg  used on input line 275.
+(pdftex.def)             Requested size: 141.94835pt x 127.12175pt.
+<FOTOS/caso_3_mapa_calor.jpg, id=162, 518.8986pt x 464.6961pt>
+File: FOTOS/caso_3_mapa_calor.jpg Graphic file (type jpg)
+<use FOTOS/caso_3_mapa_calor.jpg>
+Package pdftex.def Info: FOTOS/caso_3_mapa_calor.jpg  used on input line 280.
+(pdftex.def)             Requested size: 141.94835pt x 127.12175pt.
+<FOTOS/caso_1_presion_ataquia_neta.jpg, id=163, 596.9502pt x 426.393pt>
 File: FOTOS/caso_1_presion_ataquia_neta.jpg Graphic file (type jpg)
 <use FOTOS/caso_1_presion_ataquia_neta.jpg>
-Package pdftex.def Info: FOTOS/caso_1_presion_ataquia_neta.jpg  used on input line 289.
+Package pdftex.def Info: FOTOS/caso_1_presion_ataquia_neta.jpg  used on input line 291.
 (pdftex.def)             Requested size: 141.94835pt x 101.393pt.
-<FOTOS/caso_2_presion_ataquia_neta.jpg, id=169, 596.9502pt x 426.393pt>
+<FOTOS/caso_2_presion_ataquia_neta.jpg, id=164, 596.9502pt x 426.393pt>
 File: FOTOS/caso_2_presion_ataquia_neta.jpg Graphic file (type jpg)
 <use FOTOS/caso_2_presion_ataquia_neta.jpg>
-Package pdftex.def Info: FOTOS/caso_2_presion_ataquia_neta.jpg  used on input line 294.
+Package pdftex.def Info: FOTOS/caso_2_presion_ataquia_neta.jpg  used on input line 296.
 (pdftex.def)             Requested size: 141.94835pt x 101.393pt.
-<FOTOS/caso_3_presion_ataquia_neta.jpg, id=170, 596.9502pt x 426.393pt>
+<FOTOS/caso_3_presion_ataquia_neta.jpg, id=165, 596.9502pt x 426.393pt>
 File: FOTOS/caso_3_presion_ataquia_neta.jpg Graphic file (type jpg)
 <use FOTOS/caso_3_presion_ataquia_neta.jpg>
-Package pdftex.def Info: FOTOS/caso_3_presion_ataquia_neta.jpg  used on input line 299.
-(pdftex.def)             Requested size: 141.94835pt x 101.393pt.
-<FOTOS/caso_1_centroide_y.jpg, id=171, 596.9502pt x 426.393pt>
-File: FOTOS/caso_1_centroide_y.jpg Graphic file (type jpg)
-<use FOTOS/caso_1_centroide_y.jpg>
-Package pdftex.def Info: FOTOS/caso_1_centroide_y.jpg  used on input line 328.
-(pdftex.def)             Requested size: 141.94835pt x 101.393pt.
-<FOTOS/caso_2_centroide_y.jpg, id=172, 596.9502pt x 426.393pt>
-File: FOTOS/caso_2_centroide_y.jpg Graphic file (type jpg)
-<use FOTOS/caso_2_centroide_y.jpg>
-Package pdftex.def Info: FOTOS/caso_2_centroide_y.jpg  used on input line 333.
-(pdftex.def)             Requested size: 141.94835pt x 101.393pt.
-<FOTOS/caso_3_centroide_y.jpg, id=173, 596.9502pt x 426.393pt>
-File: FOTOS/caso_3_centroide_y.jpg Graphic file (type jpg)
-<use FOTOS/caso_3_centroide_y.jpg>
-Package pdftex.def Info: FOTOS/caso_3_centroide_y.jpg  used on input line 338.
+Package pdftex.def Info: FOTOS/caso_3_presion_ataquia_neta.jpg  used on input line 301.
 (pdftex.def)             Requested size: 141.94835pt x 101.393pt.
 File: LOGO_UNIVERSIDAD.jpg Graphic file (type jpg)
 <use LOGO_UNIVERSIDAD.jpg>
-Package pdftex.def Info: LOGO_UNIVERSIDAD.jpg  used on input line 342.
+Package pdftex.def Info: LOGO_UNIVERSIDAD.jpg  used on input line 313.
 (pdftex.def)             Requested size: 110.8946pt x 40.20973pt.
  [3
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.342 
-      
+l.313  
+        import numpy as np
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.342 
-      
+l.313  
+        import numpy as np
 pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.342 
-      
+l.313  
+        import numpy as np
 pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.342 
-      
+l.313  
+        import numpy as np
 pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.342 
-      
+l.313  
+        import numpy as np
 pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.342 
-       <./FOTOS/caso_1_mapa_calor.jpg> <./FOTOS/caso_2_mapa_calor.jpg> <./FOTOS/caso_3_mapa_calor.jpg> <./FOTOS/caso_1_presion_ataquia_neta.jpg> <./FOTOS/caso_2_presion_ataquia_neta.jpg> <./FOTOS/caso_3_presion_ataquia_neta.jpg>]
+l.313  
+        import numpy as np <./FOTOS/caso_1_mapa_calor.jpg> <./FOTOS/caso_2_mapa_calor.jpg> <./FOTOS/caso_3_mapa_calor.jpg> <./FOTOS/caso_1_presion_ataquia_neta.jpg> <./FOTOS/caso_2_presion_ataquia_neta.jpg> <./FOTOS/caso_3_presion_ataquia_neta.jpg>]
+<FOTOS/caso_1_centroide_y.jpg, id=175, 596.9502pt x 426.393pt>
+File: FOTOS/caso_1_centroide_y.jpg Graphic file (type jpg)
+<use FOTOS/caso_1_centroide_y.jpg>
+Package pdftex.def Info: FOTOS/caso_1_centroide_y.jpg  used on input line 330.
+(pdftex.def)             Requested size: 141.94835pt x 101.393pt.
+<FOTOS/caso_2_centroide_y.jpg, id=176, 596.9502pt x 426.393pt>
+File: FOTOS/caso_2_centroide_y.jpg Graphic file (type jpg)
+<use FOTOS/caso_2_centroide_y.jpg>
+Package pdftex.def Info: FOTOS/caso_2_centroide_y.jpg  used on input line 335.
+(pdftex.def)             Requested size: 141.94835pt x 101.393pt.
+<FOTOS/caso_3_centroide_y.jpg, id=177, 596.9502pt x 426.393pt>
+File: FOTOS/caso_3_centroide_y.jpg Graphic file (type jpg)
+<use FOTOS/caso_3_centroide_y.jpg>
+Package pdftex.def Info: FOTOS/caso_3_centroide_y.jpg  used on input line 340.
+(pdftex.def)             Requested size: 141.94835pt x 101.393pt.
 File: LOGO_UNIVERSIDAD.jpg Graphic file (type jpg)
 <use LOGO_UNIVERSIDAD.jpg>
-Package pdftex.def Info: LOGO_UNIVERSIDAD.jpg  used on input line 377.
+Package pdftex.def Info: LOGO_UNIVERSIDAD.jpg  used on input line 379.
 (pdftex.def)             Requested size: 110.8946pt x 40.20973pt.
  [4
 pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.377 \end{document}
+l.379 \end{document}
                     
 pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.377 \end{document}
+l.379 \end{document}
                     
 pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.377 \end{document}
+l.379 \end{document}
                     
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.377 \end{document}
+l.379 \end{document}
                      <./FOTOS/caso_1_centroide_y.jpg> <./FOTOS/caso_2_centroide_y.jpg> <./FOTOS/caso_3_centroide_y.jpg>] (./informe.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -939,13 +939,13 @@ Package rerunfilecheck Info: File `informe.out' has not changed.
 Here is how much of TeX's memory you used:
  25318 strings out of 474116
  459409 string characters out of 5743682
- 2148187 words of memory out of 5000000
+ 2119187 words of memory out of 5000000
  47180 multiletter control sequences out of 15000+600000
  561281 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,16n,93p,1221b,1380s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,17n,93p,1221b,2038s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on informe.pdf (7 pages, 1807341 bytes).
+Output written on informe.pdf (7 pages, 1807623 bytes).
 PDF statistics:
  240 PDF objects out of 1000 (max. 8388607)
  202 compressed objects within 3 object streams
