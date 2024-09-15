@@ -129,7 +129,7 @@ def presiones_ataguia(caso, nombre, altura_rel, extension):
         hp = Delta_Hi-Zg
         u = (hp*gamma_agua)/1000
         if nombre == 'caso_1':
-            derecha[coor[clave][1]+0.01] = u
+            derecha[coor[clave][1]+0.01] = 29.43
             break
         derecha[coor[clave][1]] = u
 
@@ -183,8 +183,8 @@ def presiones_ataguia(caso, nombre, altura_rel, extension):
     neto_ordenada = sorted(neto, key=lambda x: x[0], reverse=True)
 
 
-    #graficar_diccionario(ax, izquierda, False, color='blue')
-    #graficar_diccionario(ax, derecha, True, color='blue')
+    # graficar_diccionario(ax, izquierda, False, color='blue')
+    # graficar_diccionario(ax, derecha, True, color='blue')
     graficar_lista(ax, neto_ordenada, color='red')
 
     x = np.array([sublista[0] for sublista in neto_ordenada])
@@ -203,7 +203,7 @@ def presiones_ataguia(caso, nombre, altura_rel, extension):
 
     #Ahora grafico el centroide
 
-    agregar_linea_horizontal(ax, x_bar + altura_rel, 0, 210, 'red') #Linea de A1
+    # agregar_linea_horizontal(ax, x_bar + altura_rel, 0, 210, 'red') #Linea de A1
     
     # Quiero obtener las presiones en ciertos puntos
 
@@ -269,7 +269,7 @@ def presiones_ataguia(caso, nombre, altura_rel, extension):
 
     #luego al lado derecho
 
-presiones_ataguia(caso_1, 'caso_1', altura_rel, '_centroide_y')
-presiones_ataguia(caso_2, 'caso_2', altura_rel, '_centroide_y')
-presiones_ataguia(caso_3, 'caso_3', altura_rel, '_centroide_y')
+presiones_ataguia(caso_1, 'caso_1', altura_rel, '_presion_ataguia_neta')
+# presiones_ataguia(caso_2, 'caso_2', altura_rel, '_centroide_y')
+# presiones_ataguia(caso_3, 'caso_3', altura_rel, '_centroide_y')
     

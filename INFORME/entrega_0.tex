@@ -6,12 +6,16 @@
 \section{Introducción}
 
 Una ataguía, también llamada cofre, es un recinto construido dentro o a través de un cuerpo de agua para permitir que el área cerrada sea bombeada \textbf{\citet{acerlum2023}}.
+\\ \\
+De esta manera, se determina que el análisis estructural y geomecánico de una ataguía es fundamental, no solo para determinar cuánto caudal es necesario extraer, sino también para garantizar la seguridad en la zona de trabajo, donde hay factores como la presión de poros o licuefacción del suelo que hay que tomar en consideración.
+\\ \\
+En base a lo anteriormente mencionado, se desarrolló un análisis para una ataguía en 3 casos distintos, determinando así cuál es el más idóneo a utilizar.
 
 \section{Desarrollo}
 
 Los códigos escritos y utilizados se encuentran en el siguiente enlace: \href{https://github.com/LukasWolff2002/PROYECTO_1_MCOC/tree/main/CODIGO}{Código Python}. Por efectos de simplicidad del informe, estos no serán explicados en detalle.
 
-\subsection{Dibujos}
+\subsection{Esquemas}
 
 \begin{figure}[H]
   \centering
@@ -32,16 +36,18 @@ Los códigos escritos y utilizados se encuentran en el siguiente enlace: \href{h
   \end{minipage}
 \end{figure}
 
-Los dibujos en tamaño A4, como fue solicitado, y con un espaciado de 5mm (en escala correspondiente a 1 metro), se encuentran en el siguiente enlace: \href{https://github.com/LukasWolff2002/PROYECTO_1_MCOC/tree/main/DIBUJOS_A4}{Dibujos A4}.
+Los dibujos en tamaño A4, como fue solicitado, y con un espaciado de 5mm (en escala correspondiente a 1 metro), se encuentran en el siguiente enlace: \href{https://github.com/LukasWolff2002/PROYECTO_1_MCOC/tree/main/DIBUJOS_A4}{Esquemas A4}.
 \\ \\
 \textbf{Nota:} Los dibujos fueron realizados en Python, utilizando distintas librerías para poder lograr la equipotencialidad. En base a las coordenadas obtenidas, se realizaron los distintos cálculos.
 
+\newpage
 \subsection{Caudal de Infiltración}
 
 Se calculó el caudal de infiltración como:
 
 \begin{lstlisting}[language=Python]
-  #Arreglar código
+  hl = (C1+B1) - (C2+B2)
+  inf = k*hl*(num_canales/(num_equipotenciales))*24*3600 #m3/dia
 \end{lstlisting}
 
 Lo cual dio como resultado:
@@ -52,9 +58,9 @@ Lo cual dio como resultado:
     \hline
     Caso & Caudal de Infiltración [$m^3/s$] \\
     \hline
-    1 &  \\ \hline
-    2 &  \\ \hline
-    3 &  \\
+    1 & 20.567 \\ \hline
+    2 & 15.202 \\ \hline
+    3 & 12.072 \\
     \hline
   \end{tabular}
   \caption{Caudal de Infiltración}
@@ -95,12 +101,12 @@ Donde las presiones en los distintos puntos solicitados son:
     \hline
     Caso & A & B & C & D & E & F & G & H \\
     \hline
-    1 & 0 & 37.28 & 71.14 & 79.33 & 79.35 & 68.13 & 63.59 & 0 \\ \hline
+    1 & 0 & 37.28 & 71.14 & 79.33 & 79.35 & 68.13 & 27.47 & 0 \\ \hline
     2 & 0 & 37.28 & 59.70 & 78.65 & 89.44 & 81.17 & 27.47 & 0 \\ \hline
     3 & 0 & 37.28 & 50.01 & 56.37 & 95.33 & 88.45 & 7.85 & 0 \\
     \hline
   \end{tabular}
-  \caption{Presiones en Ataguía en [KPa]}
+  \caption{Presiones en Ataguía [KPa]}
 \end{table}
 
 Para calcular estas presiones, primero se calcularon las presiones en los distintos puntos conocidos de las líneas piezométricas:
@@ -290,6 +296,7 @@ Para determinar el factor de seguridad, simplemente se calcula la relación entr
   \caption{Factor de Seguridad}
 \end{table}
 
+\newpage
 \subsection{Análisis de Resultados}
 
 Aunque no ocurre licuefacción en ningún caso, eso no implica una seguridad como tal en la ataguía, ya que estáticamente debe ser estable. En base a esto, se determina que el caso 3 es el más seguro, ya que la ataguía se encuentra en un equilibrio estático luego de realizar un análisis de presiones y momentos.
@@ -301,7 +308,10 @@ En base al código realizado, este se escribió de manera personal, donde se uti
 En base a la licuefacción, se observa que el caso 1 es el más inestable, donde si se reduce un poco más el máximo gradiente hidráulico, fácilmente se alcanza el ic.
 \\ \\
 Finalmente, se determinaron los distintos datos solicitados como las presiones de poros en distintos puntos, o el caudal necesario de bombeo. Esta última variable dependerá del tipo de suelo, además de la instalación y gradiente hidráulico generado por la ataguía.
+\\ \\
+\textbf{Nota:} Los resultados dependeran mucho de la cantidad de canales de flujo y lineas equipotenciales, donde aun asi se deberia mantener una relacion por equipotencialidad. Aun asi, puede que exista una variacion de los resultados en base a los input ingresados.
 
+\newpage
 \section{Conclusión}
 
 En conclusión, ya que todos los objetivos propuestos y solicitados fueron logrados, se puede considerar que la experiencia fue realizada de manera satisfactoria.
