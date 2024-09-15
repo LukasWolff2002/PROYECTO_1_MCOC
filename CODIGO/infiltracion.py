@@ -8,7 +8,7 @@ def infiltracion (caso):
 
     hl = (C1+B1) - (C2+B2)
     
-    #inf = k*hl*(d/(hl+B2+d))*24*3600 #m3/dia
+    inf = k*hl*(d/(hl+B2+d))*24*3600 #m3/dia
 
     return inf
     
