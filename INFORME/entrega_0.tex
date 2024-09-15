@@ -11,6 +11,60 @@ De esta manera, se determina que el análisis estructural y geomecánico de una 
 \\ \\
 En base a lo anteriormente mencionado, se desarrolló un análisis para una ataguía en 3 casos distintos, determinando así cuál es el más idóneo a utilizar.
 
+\section{Marco Teorico}
+
+A continuacion se presentaran las distintas ecuaciones utilizadas en el desarrollo del informe.
+
+\subsection{Infiltración}
+
+\begin{equation}
+  I = k \cdot h_l \cdot \frac{N_i}{N_d} \cdot 24 \cdot 3600 [m^3/dia]
+\end{equation}
+
+Donde $N_d$ es el numero de redes de flujo y $N_i$ es el numero de lineas equipotenciales.
+
+\subsection{Presión de Poros}
+
+\begin{equation}
+  u = \frac{h_p \cdot \gamma_{agua}}{1000} [KPa]
+\end{equation}
+
+\begin{equation}
+  h_p = \Delta H_i - Z_g
+\end{equation}
+
+\begin{equation}
+  \Delta H_i = h_i - \frac{\Delta H \cdot n_i}{N_d}
+\end{equation}
+
+Y $Z_g$ corresponde a la altura del punto en la linea equipotencial, $h_i$ a la altura inicial, $\Delta H$ al gradiente hidraulico, $n_i$ al numero de linea equipotencial y $N_d$ al numero de redes de flujo.
+
+\subsection{Máximo Gradiente Hidráulico}
+
+Corresponde a la minima distancia que debe recorrer el agua, es decir;
+
+\begin{equation}
+  G = \frac{\Delta h_{min}}{L}
+\end{equation}
+
+\subsection{Falla por Licuefacción}
+
+Para conocer si falla por licuefaccion, primero es nesesario calcular $i_c$:
+
+\begin{equation}
+  i_c = \frac{\gamma{suelo} - \gamma_{agua}}{\gamma_{agua}}
+\end{equation}
+
+Luego se determina si falla por licuefaccion si $i_c < G$.
+
+\subsection{Factor de Seguridad}
+
+Finalmente, el factor de seguridad se calcula como:
+
+\begin{equation}
+  FS = \frac{G}{i_c}
+\end{equation}
+
 \section{Desarrollo}
 
 Los códigos escritos y utilizados se encuentran en el siguiente enlace: \href{https://github.com/LukasWolff2002/PROYECTO_1_MCOC/tree/main/CODIGO}{Código Python}. Por efectos de simplicidad del informe, estos no serán explicados en detalle.
@@ -40,7 +94,6 @@ Los dibujos en tamaño A4, como fue solicitado, y con un espaciado de 5mm (en es
 \\ \\
 \textbf{Nota:} Los dibujos fueron realizados en Python, utilizando distintas librerías para poder lograr la equipotencialidad. En base a las coordenadas obtenidas, se realizaron los distintos cálculos.
 
-\newpage
 \subsection{Caudal de Infiltración}
 
 Se calculó el caudal de infiltración como:
@@ -296,7 +349,6 @@ Para determinar el factor de seguridad, simplemente se calcula la relación entr
   \caption{Factor de Seguridad}
 \end{table}
 
-\newpage
 \subsection{Análisis de Resultados}
 
 Aunque no ocurre licuefacción en ningún caso, eso no implica una seguridad como tal en la ataguía, ya que estáticamente debe ser estable. En base a esto, se determina que el caso 3 es el más seguro, ya que la ataguía se encuentra en un equilibrio estático luego de realizar un análisis de presiones y momentos.
@@ -311,7 +363,6 @@ Finalmente, se determinaron los distintos datos solicitados como las presiones d
 \\ \\
 \textbf{Nota:} Los resultados dependeran mucho de la cantidad de canales de flujo y lineas equipotenciales, donde aun asi se deberia mantener una relacion por equipotencialidad. Aun asi, puede que exista una variacion de los resultados en base a los input ingresados.
 
-\newpage
 \section{Conclusión}
 
 En conclusión, ya que todos los objetivos propuestos y solicitados fueron logrados, se puede considerar que la experiencia fue realizada de manera satisfactoria.
